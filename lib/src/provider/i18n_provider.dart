@@ -25,6 +25,10 @@ abstract class I18nProvider {
   static const I18nProvider chinese = CNProvider();
 
   static const I18nProvider english = ENProvider();
+
+  static const I18nProvider spanish = SPProvider();
+
+  static const I18nProvider french = FRProvider();
 }
 
 class CNProvider extends I18nProvider {
@@ -111,6 +115,90 @@ class ENProvider extends I18nProvider {
         cancelText: "Cancel",
         sureText: "Allow",
         titleText: "No permission to access gallery");
+  }
+}
+
+class SPProvider extends I18nProvider {
+  const SPProvider() : super._();
+
+  @override
+  String getTitleText(Options options) {
+    return "Seleccionar archivo";
+  }
+
+  @override
+  String getPreviewText(Options options, SelectedProvider selectedProvider) {
+    return "Previsualizar (${selectedProvider.selectedCount})";
+  }
+
+  @override
+  String getSureText(Options options, int currentCount) {
+    return "Guardar ($currentCount/${options.maxSelected})";
+  }
+
+  @override
+  String getSelectedOptionsText(Options options) {
+    return "Seleccionada";
+  }
+
+  @override
+  String getMaxTipText(Options options) {
+    return "Seleccionar ${options.maxSelected} archivos como máximo";
+  }
+
+  @override
+  String getAllGalleryText(Options options) {
+    return "Recientes";
+  }
+
+  @override
+  I18NPermissionProvider getNotPermissionText(Options options) {
+    return I18NPermissionProvider(
+        cancelText: "Cancelar",
+        sureText: "Permitir",
+        titleText: "No hay permiso para acceder a la galería");
+  }
+}
+
+class FRProvider extends I18nProvider {
+  const FRProvider() : super._();
+
+  @override
+  String getTitleText(Options options) {
+    return "Préparateur d'images";
+  }
+
+  @override
+  String getPreviewText(Options options, SelectedProvider selectedProvider) {
+    return "Aperçu (${selectedProvider.selectedCount})";
+  }
+
+  @override
+  String getSureText(Options options, int currentCount) {
+    return "sauvegarde ($currentCount/${options.maxSelected})";
+  }
+
+  @override
+  String getSelectedOptionsText(Options options) {
+    return "Sélectionnés";
+  }
+
+  @override
+  String getMaxTipText(Options options) {
+    return "Sélectionnez un maximum de ${options.maxSelected} fichiers";
+  }
+
+  @override
+  String getAllGalleryText(Options options) {
+    return "Récentes";
+  }
+
+  @override
+  I18NPermissionProvider getNotPermissionText(Options options) {
+    return I18NPermissionProvider(
+        cancelText: "Annuler",
+        sureText: "permettre",
+        titleText: "Pas d'autorisation d'accès à la galerie");
   }
 }
 
